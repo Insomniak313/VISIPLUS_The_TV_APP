@@ -1,10 +1,11 @@
-import {CLEAR_MOVIES, RECEIVE_MOVIE} from "./ActionTypes"
+import {FETCH_MOVIES, RECEIVE_MOVIES} from "./ActionTypes"
 
-export const receiveMovie = (movie) => ({
-  type: RECEIVE_MOVIE,
-  movie
+export const fetchMovies = (searchTerm) => ({
+  type: FETCH_MOVIES,
+  searchTerm
 })
 
-export const clearMovies = () => ({
-  type: CLEAR_MOVIES,
+export const receiveMovies = (movies) => ({
+  type: RECEIVE_MOVIES,
+  movies
 })

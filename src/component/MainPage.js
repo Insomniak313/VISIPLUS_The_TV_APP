@@ -1,21 +1,12 @@
 import {ScrollView, StyleSheet, Text, TextInput, View} from 'react-native'
-import {useEffect, useState} from "react"
 import {Movie} from "./Movie"
-import {search} from "../service/api"
 
-const MainPage = ({movies, receiveMovie, clearMovies}) => {
-  const [searchTerm, setSearchTerm] = useState('matrix')
-
-  useEffect(() => {
-    clearMovies()
-    search(searchTerm).then(({data}) => data.map((d) => receiveMovie(d)))
-  }, [searchTerm])
-
+const MainPage = ({movies, fetchMovies}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>The TV APP</Text>
       <Text style={styles.description}>Vous cherchez quelque chose ?</Text>
-      <TextInput style={styles.input} value={searchTerm} onChangeText={(text) => setSearchTerm(text)}/>
+      <TextInput style={styles.input} onChangeText={(text) => fetchMovies(text)}/>
       <ScrollView>
         <>{movies.map((data, i) => <Movie key={i} data={data}/>)}</>
       </ScrollView>

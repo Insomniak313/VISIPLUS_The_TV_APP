@@ -1,25 +1,19 @@
-import {CLEAR_MOVIES, RECEIVE_MOVIE} from "./ActionTypes"
+import {RECEIVE_MOVIES} from "./ActionTypes"
 
 export const initialState = {
   movies: []
 }
 
-const receiveMovie = (state, movie) => ({
+const receiveMovies = (state, movies) => ({
   ...state,
-  movies: [...state.movies, movie]
+  movies: movies
 })
 
-const clearMovies = (state) => ({
-  ...state,
-  movies: []
-})
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case RECEIVE_MOVIE:
-      return receiveMovie(state, action.movie)
-    case CLEAR_MOVIES:
-      return clearMovies(state)
+    case RECEIVE_MOVIES:
+      return receiveMovies(state, action.movies)
     default:
       return state
   }
